@@ -61,27 +61,19 @@ public class Wordle {
         }
         return userInput;
     }
-    
-    
-    // method that replaces a character in a string at a specific index
-    public static String replaceChar(String str, char c, int index) {
-        char[] chars = str.toCharArray();
-        chars[index] = c;
-        return String.valueOf(chars);
-    }
-    
+
     
     // the game
     public static void loopThroughSixGuesses() {
 
         for (int j = 0; j < 6; j++) {
 
-            String userWord = obtainValidUserWord();
-            String randomWordWithoutGreensAndYellows = randomWord;
+            String guess = obtainValidUserWord();
+            String solution = randomWord;
 
             // check if the user won
-            if (userWord.equals(randomWord)) {
-                System.out.print((GREEN + " " + userWord.toUpperCase().replace("", "  ").trim() + " " + RESET));
+            if (guess.equals(randomWord)) {
+                System.out.print((GREEN + " " + guess.toUpperCase().replace("", "  ").trim() + " " + RESET));
                 System.out.print("     guesses: " + (j+1) + "/6");
                 System.out.println("\n\nyou got it! congrats! 🥳");
                 System.out.println();
@@ -91,39 +83,28 @@ public class Wordle {
 
                 
                 // loop checking every letter
-
-                String userWordWithoutGreensAndYellows = userWord;
                 String[] positionColors = new String[5];
 
-                // check for green letters
                 for (int i = 0; i < 5; i++) {
-                    if (userWord.charAt(i) == randomWord.charAt(i)) {
-                        userWordWithoutGreensAndYellows = replaceChar(userWordWithoutGreensAndYellows, '0', i);
-                        randomWordWithoutGreensAndYellows = replaceChar(randomWordWithoutGreensAndYellows, '0', i);
-                        
-                        greenLetters.add(userWord.toUpperCase().charAt(i));
-                        positionColors[i] = GREEN;
+                	char guessLetter = guess.charAt(i);
+                    char solutionLetter = solution.charAt(i);
+                    if (guessLetter == solutionLetter) {
+                    	greenLetters.add(guess.toUpperCase().charAt(i));
+                    	positionColors[i] = GREEN;
                     }
-                }
-
-                // check for yellow letters
-                for (int i = 0; i < 5; i++) {
-                    if (userWordWithoutGreensAndYellows.charAt(i) == '0') {
-
-                    } else if (randomWordWithoutGreensAndYellows.indexOf(userWordWithoutGreensAndYellows.charAt(i)) != -1) {
-                        randomWordWithoutGreensAndYellows = replaceChar(randomWordWithoutGreensAndYellows, '0', randomWordWithoutGreensAndYellows.indexOf(userWordWithoutGreensAndYellows.charAt(i)));
-                        userWordWithoutGreensAndYellows = replaceChar(userWordWithoutGreensAndYellows, '0', i);
-                        yellowLetters.add(userWord.toUpperCase().charAt(i));
-                        positionColors[i] = YELLOW;
-                    } else {
-                        blackLetters.add(userWord.toUpperCase().charAt(i));
-                        positionColors[i] = BLACK;
+                    else if (solution.indexOf(guessLetter) != -1) {
+                    	yellowLetters.add(guess.toUpperCase().charAt(i));
+                    	positionColors[i] = YELLOW;
                     }
+                    else {
+                      blackLetters.add(guess.toUpperCase().charAt(i));
+                      positionColors[i] = BLACK;
+                    }	
                 }
 
                 // print user word with colours
                 for (int i = 0; i < 5; i++) {
-                    System.out.print(positionColors[i] + " " + userWord.toUpperCase().charAt(i)+ " " + RESET);
+                    System.out.print(positionColors[i] + " " + guess.toUpperCase().charAt(i)+ " " + RESET);
                 }
                 System.out.print("     guesses: " + (j+1) + "/6");
                 System.out.println();
