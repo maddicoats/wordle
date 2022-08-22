@@ -20,3 +20,7 @@ A java game based on Wordle to be played in the eclipse console.
 ### Extension
 
 - Create a history file that keeps track of user wins/losses and how many letters they guessed it in
+
+## Links
+
+- [ANSI Escape in Console:](https://marketplace.eclipse.org/content/ansi-escape-console) An Eclipse plugin that interprets ANSI escape sequences to color the console output
