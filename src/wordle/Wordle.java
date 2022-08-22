@@ -32,44 +32,33 @@ public class Wordle {
     private static int inFive = 0;
     private static int inSix = 0;
     
-    // METHODS
-
     
+    // METHODS
 	public static void setWins(int wins) {
 		Wordle.wins = wins;
 	}
-
 	public static void setGamesPlayed(int gamesPlayed) {
 		Wordle.gamesPlayed = gamesPlayed;
 	}
-	
 	public static void setLosses(int losses) {
 		Wordle.losses = losses;
 	}
 	
-	
-
-
 	public static void setInOne(int inOne) {
 		Wordle.inOne = inOne;
 	}
-
 	public static void setInTwo(int inTwo) {
 		Wordle.inTwo = inTwo;
 	}
-
 	public static void setInThree(int inThree) {
 		Wordle.inThree = inThree;
 	}
-
 	public static void setInFour(int inFour) {
 		Wordle.inFour = inFour;
 	}
-
 	public static void setInFive(int inFive) {
 		Wordle.inFive = inFive;
 	}
-
 	public static void setInSix(int inSix) {
 		Wordle.inSix = inSix;
 	}
@@ -86,18 +75,21 @@ public class Wordle {
 		} else {
 			percentagePrint = Integer.toString((int) p) + "%  ";
 		}
+		
 		String gamesPrint;
 		if (gamesPlayed>9) {
 			gamesPrint = Integer.toString(gamesPlayed);
 		} else {
 			gamesPrint = Integer.toString(gamesPlayed) + " ";
 		}
+		
 		String winsPrint;
 		if (wins>9) {
 			winsPrint = Integer.toString(wins);
 		} else {
 			winsPrint = Integer.toString(wins) + " ";
 		}
+		
 		String lossesPrint;
 		if (losses>9) {
 			lossesPrint = Integer.toString(losses);
@@ -138,7 +130,7 @@ public class Wordle {
         System.out.println("enter your first guess here:");
     }
     
- // verify the user word by length and check against available options
+    // verify the user word by length and check against available options
     public static String obtainValidUserWord () {
         Scanner s = new Scanner(System.in);
         String userInput = s.nextLine();
@@ -189,6 +181,7 @@ public class Wordle {
             		
             	setWins(wins + 1);
             	setGamesPlayed(gamesPlayed + 1);
+            	
                 System.out.print((GREEN + " " + guess.toUpperCase().replace("", "  ").trim() + " " + RESET));
                 System.out.print("     guesses: " + (j+1) + "/6");
                 System.out.println("\n\nyou got it! congrats! 🥳");
@@ -232,7 +225,6 @@ public class Wordle {
             	setGamesPlayed(gamesPlayed + 1);
                 System.out.println("\nyou ran out of guesses :(");
                 System.out.println("\nthe word was: " + randomWord.toUpperCase());
-
             }
         }
     }
@@ -254,7 +246,4 @@ public class Wordle {
         	System.out.println("ok");
         }
     }
-
-
-
 }
