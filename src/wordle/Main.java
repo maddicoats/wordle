@@ -1,5 +1,11 @@
 package wordle;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -15,4 +21,27 @@ public class Main {
 		Wordle.playAgain();
 	}
 
+	public List<String> readDictionary() {
+
+        List<String> filewordList = new ArrayList<>();
+
+        try {
+            // Open and read the dictionary file
+            InputStream in = this.getClass().getClassLoader().getResourceAsStream("wordfile.txt");
+            assert in != null;
+            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            String strLine;
+
+            //Read file line By line
+            while ((strLine = reader.readLine()) != null) {
+            	filewordList.add(strLine);
+            }
+            //Close the input stream
+            in.close();
+
+        } catch (Exception e) {//Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }
+        return filewordList;
+    }
 }
