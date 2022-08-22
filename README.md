@@ -2,6 +2,11 @@
 
 A java game based on Wordle to be played in the eclipse console.
 
+<img src="https://user-images.githubusercontent.com/107823527/185914747-72f16e40-1cd9-45ac-8cc1-d1f5900d3fa2.png" width="700">
+
+<img src="https://user-images.githubusercontent.com/107823527/185914772-d4d3ba6a-1986-444e-b70a-a33478f54fac.png" width="400">
+
+
 ## MVP
 
 - Recreate a simplified version of the game Wordle to be played in a Java console application
